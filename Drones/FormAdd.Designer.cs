@@ -52,7 +52,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(160, 118);
+            this.buttonAdd.Location = new System.Drawing.Point(159, 101);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 1;
@@ -73,6 +73,7 @@
             this.textBoxDistance.Name = "textBoxDistance";
             this.textBoxDistance.Size = new System.Drawing.Size(120, 20);
             this.textBoxDistance.TabIndex = 3;
+            this.textBoxDistance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDistance_KeyPress);
             // 
             // textBoxHeight
             // 
@@ -80,6 +81,7 @@
             this.textBoxHeight.Name = "textBoxHeight";
             this.textBoxHeight.Size = new System.Drawing.Size(120, 20);
             this.textBoxHeight.TabIndex = 4;
+            this.textBoxHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDistance_KeyPress);
             // 
             // textBoxSpeed
             // 
@@ -87,6 +89,7 @@
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.Size = new System.Drawing.Size(120, 20);
             this.textBoxSpeed.TabIndex = 5;
+            this.textBoxSpeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDistance_KeyPress);
             // 
             // comboBoxStatus
             // 
@@ -158,7 +161,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 155);
+            this.ClientSize = new System.Drawing.Size(398, 136);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxModel);
             this.Controls.Add(this.label2);

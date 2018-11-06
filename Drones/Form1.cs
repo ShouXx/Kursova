@@ -12,7 +12,7 @@ namespace Drones
 {
     public partial class Form1 : Form
     {
-        List<Drone> drone = new List<Drone>();
+        List<Drone> drones = new List<Drone>();
 
         public Form1()
         {
@@ -22,7 +22,7 @@ namespace Drones
         void RefreshData()
         {
             dataGridView1.RowCount = 0;
-            foreach(Drone d in drone)
+            foreach(Drone d in drones)
             {
                 ++dataGridView1.RowCount;
                 dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value = dataGridView1.RowCount.ToString();
@@ -41,7 +41,7 @@ namespace Drones
             add.ShowDialog();
             if (add.created)
             {
-                drone.Add(add.Drone);
+                drones.Add(add.Drone);
                 RefreshData();
             }
         }
@@ -50,5 +50,23 @@ namespace Drones
         {
             Close();
         }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+        }
+
+        
     }
 }
