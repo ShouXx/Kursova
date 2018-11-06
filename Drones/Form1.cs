@@ -39,8 +39,16 @@ namespace Drones
         {
             FormAdd add = new FormAdd();
             add.ShowDialog();
-            drone.Add(add.Drone);
-            RefreshData();
+            if (add.created)
+            {
+                drone.Add(add.Drone);
+                RefreshData();
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

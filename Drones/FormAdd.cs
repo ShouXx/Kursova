@@ -13,6 +13,7 @@ namespace Drones
     public partial class FormAdd : Form
     {
         public Drone Drone { get; set; }
+        public bool created = false; 
 
         public FormAdd()
         {
@@ -29,6 +30,8 @@ namespace Drones
             string Status = comboBoxStatus.Text;
 
             Drone = new Drone(Model, Operator, Distance, Height, Speed, Status);
+
+            created = true;
 
             Close();
         }
