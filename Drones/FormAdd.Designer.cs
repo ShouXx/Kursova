@@ -55,7 +55,7 @@
             this.buttonAdd.Location = new System.Drawing.Point(159, 101);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 1;
+            this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "Додати";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -65,14 +65,14 @@
             this.textBoxOperator.Location = new System.Drawing.Point(138, 25);
             this.textBoxOperator.Name = "textBoxOperator";
             this.textBoxOperator.Size = new System.Drawing.Size(120, 20);
-            this.textBoxOperator.TabIndex = 2;
+            this.textBoxOperator.TabIndex = 1;
             // 
             // textBoxDistance
             // 
             this.textBoxDistance.Location = new System.Drawing.Point(264, 25);
             this.textBoxDistance.Name = "textBoxDistance";
             this.textBoxDistance.Size = new System.Drawing.Size(120, 20);
-            this.textBoxDistance.TabIndex = 3;
+            this.textBoxDistance.TabIndex = 2;
             this.textBoxDistance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDistance_KeyPress);
             // 
             // textBoxHeight
@@ -80,7 +80,7 @@
             this.textBoxHeight.Location = new System.Drawing.Point(12, 64);
             this.textBoxHeight.Name = "textBoxHeight";
             this.textBoxHeight.Size = new System.Drawing.Size(120, 20);
-            this.textBoxHeight.TabIndex = 4;
+            this.textBoxHeight.TabIndex = 3;
             this.textBoxHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDistance_KeyPress);
             // 
             // textBoxSpeed
@@ -88,7 +88,7 @@
             this.textBoxSpeed.Location = new System.Drawing.Point(138, 64);
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.Size = new System.Drawing.Size(120, 20);
-            this.textBoxSpeed.TabIndex = 5;
+            this.textBoxSpeed.TabIndex = 4;
             this.textBoxSpeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDistance_KeyPress);
             // 
             // comboBoxStatus
@@ -101,7 +101,7 @@
             this.comboBoxStatus.Location = new System.Drawing.Point(264, 64);
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(120, 21);
-            this.comboBoxStatus.TabIndex = 6;
+            this.comboBoxStatus.TabIndex = 5;
             // 
             // label1
             // 
