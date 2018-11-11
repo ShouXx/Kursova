@@ -18,6 +18,7 @@ namespace Drones
         public Form1()
         {
             InitializeComponent();
+            toolStripComboBoxStatus.SelectedIndex = 0;
         }
 
         public void RefreshData()
@@ -71,7 +72,6 @@ namespace Drones
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            drones.Clear();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -121,6 +121,8 @@ namespace Drones
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
+            drones.Clear();
+            saveFileDialog1.FileName = openFileDialog1.FileName;
             using (BinaryReader reader = new BinaryReader(File.OpenRead(openFileDialog1.FileName)))
             {
                 try
@@ -142,6 +144,7 @@ namespace Drones
         private void buttonShowAll_Click(object sender, EventArgs e)
         {
             RefreshData();
+            toolStripComboBoxStatus.SelectedIndex = 0;
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -150,6 +153,32 @@ namespace Drones
             FormEdit form = new FormEdit(cell[0], this);
             form.ShowDialog();
             RefreshData();
+        }
+
+        private void toolStripComboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (toolStripComboBoxStatus.SelectedIndex == 0)
+            {
+                RefreshData();
+            }
+            else if (toolStripComboBoxStatus.SelectedIndex == 1)
+            {
+                RefreshData();
+                for (int i = 0; i < dataGridView1.RowCount; ++i)
+                {
+                    if (drones[i].Status != "Успішне повернення")
+                        dataGridView1.Rows.RemoveAt(i);
+                }
+            }
+            else if (toolStripComboBoxStatus.SelectedIndex == 2)
+            {
+                RefreshData();
+                for (int i = 0; i < dataGridView1.RowCount; ++i)
+                {
+                    if (drones[i].Status != "Втрачено")
+                        dataGridView1.Rows.RemoveAt(i);
+                }
+            }
         }
     }
 }
