@@ -146,7 +146,10 @@ namespace Drones
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            FormAdd form = new FormAdd();
+            DataGridViewSelectedCellCollection cell = dataGridView1.SelectedCells;
+            FormEdit form = new FormEdit(cell[0], this);
+            form.ShowDialog();
+            RefreshData();
         }
     }
 }
