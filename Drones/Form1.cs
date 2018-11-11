@@ -13,14 +13,14 @@ namespace Drones
 {
     public partial class Form1 : Form
     {
-        List<Drone> drones = new List<Drone>();
+        public List<Drone> drones = new List<Drone>();
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        void RefreshData()
+        public void RefreshData()
         {
             dataGridView1.RowCount = 0;
             foreach(Drone d in drones)
@@ -38,13 +38,8 @@ namespace Drones
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            FormAdd add = new FormAdd();
+            FormAdd add = new FormAdd(this);
             add.ShowDialog();
-            if (add.created)
-            {
-                drones.Add(add.Drone);
-                RefreshData();
-            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,7 +77,7 @@ namespace Drones
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedCellCollection cell = dataGridView1.SelectedCells;
-            if (cell == null)
+            if (cell != null)
             {
                 drones.RemoveAt(cell[0].RowIndex);
                 RefreshData();
@@ -142,6 +137,16 @@ namespace Drones
                 }
             }
             RefreshData();
+        }
+
+        private void buttonShowAll_Click(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            FormAdd form = new FormAdd();
         }
     }
 }

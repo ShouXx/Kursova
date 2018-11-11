@@ -12,12 +12,12 @@ namespace Drones
 {
     public partial class FormAdd : Form
     {
-        public Drone Drone { get; set; }
-        public bool created = false; 
-
-        public FormAdd()
+        private Form1 form1;
+        
+        public FormAdd(Form1 form)
         {
             InitializeComponent();
+            form1 = form;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -29,21 +29,23 @@ namespace Drones
             double Speed = double.Parse(textBoxSpeed.Text);
             string Status = comboBoxStatus.Text;
 
-            Drone = new Drone(Model, Operator, Distance, Height, Speed, Status);
-
-            created = true;
-
-            Close();
+            form1.drones.Add(new Drone(Model, Operator, Distance, Height, Speed, Status));
+            form1.RefreshData();
         }
 
         private void textBoxDistance_KeyPress(object sender, KeyPressEventArgs e)
-        {
+            {
             char ch = e.KeyChar;
             if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
 
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
                 e.Handled = true;
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
