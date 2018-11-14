@@ -24,9 +24,9 @@ namespace Drones
         {
             string Model = textBoxModel.Text;
             string Operator = textBoxOperator.Text;
-            double Distance = double.Parse(textBoxDistance.Text);
-            double Height = double.Parse(textBoxHeight.Text);
-            double Speed = double.Parse(textBoxSpeed.Text);
+            double Distance = double.Parse(textBoxDistance.Text.Replace('.', ','));
+            double Height = double.Parse(textBoxHeight.Text.Replace('.', ','));
+            double Speed = double.Parse(textBoxSpeed.Text.Replace('.', ','));
             string Status = comboBoxStatus.Text;
 
             form1.drones.Add(new Drone(Model, Operator, Distance, Height, Speed, Status));
