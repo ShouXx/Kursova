@@ -59,6 +59,12 @@
     <Compile Include="FormAdd.Designer.cs">
       <DependentUpon>FormAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAvgDistance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAvgDistance.Designer.cs">
+      <DependentUpon>FormAvgDistance.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAdd.resx">
       <DependentUpon>FormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAvgDistance.resx">
+      <DependentUpon>FormAvgDistance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEdit.resx">
       <DependentUpon>FormEdit.cs</DependentUpon>

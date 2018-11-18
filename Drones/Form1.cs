@@ -376,7 +376,8 @@ namespace Drones
 
         private void середнійРезультатДистанціяТаСтатусПотраченоToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormAvgDistance formAvg = new FormAvgDistance(this);
+            formAvg.ShowDialog();
         }
     }
 }
