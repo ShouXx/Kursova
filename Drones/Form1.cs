@@ -99,7 +99,8 @@ namespace Drones
 
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			FormAbout formAbout = new FormAbout();
+			formAbout.ShowDialog();
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -200,7 +201,7 @@ namespace Drones
 			list[indexB] = tmp;
 		}
 
-		private void заМоделлюToolStripMenuItem_Click(object sender, EventArgs e)
+		private void forModelToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
 			{
@@ -219,7 +220,7 @@ namespace Drones
 			RefreshData();
 		}
 
-		private void заОператоромToolStripMenuItem_Click(object sender, EventArgs e)
+		private void forOperatorToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
 			{
@@ -238,7 +239,7 @@ namespace Drones
 			RefreshData();
 		}
 
-		private void заToolStripMenuItem_Click(object sender, EventArgs e)
+		private void forDistanceToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
 			{
@@ -257,7 +258,7 @@ namespace Drones
 			RefreshData();
 		}
 
-		private void заВисотоюToolStripMenuItem_Click(object sender, EventArgs e)
+		private void forHeightToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
 			{
@@ -276,7 +277,7 @@ namespace Drones
 			RefreshData();
 		}
 
-		private void заШвидкістюToolStripMenuItem_Click(object sender, EventArgs e)
+		private void forSpeedToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
 			{
@@ -295,7 +296,7 @@ namespace Drones
 			RefreshData();
 		}
 
-		private void заСтатусомToolStripMenuItem_Click(object sender, EventArgs e)
+		private void forStatusToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
 			{
@@ -314,13 +315,13 @@ namespace Drones
 			RefreshData();
 		}
 
-		private void очиститиToolStripMenuItem_Click(object sender, EventArgs e)
+		private void clearToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			drones.Clear();
 			RefreshData();
 		}
 
-		private void успішнеПоверненняТаНайкращаШвидкістьToolStripMenuItem_Click(object sender, EventArgs e)
+		private void function_2_ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			RefreshData();
 			for (int i = 0; i < dataGridView1.RowCount - 1; ++i)
@@ -351,13 +352,13 @@ namespace Drones
 			dataGridView1.Sort(Column2, ListSortDirection.Ascending);
 		}
 
-		private void однаковаВисотаЗВідхиленням7359ToolStripMenuItem_Click(object sender, EventArgs e)
+		private void function_3_ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			RefreshData();
 
 			int i = 0;
 			keyHeight = false;
-			заВисотоюToolStripMenuItem_Click(sender, e);
+			forHeightToolStripMenuItem_Click(sender, e);
 			while (i < dataGridView1.RowCount)
 			{
 				while (i == 0)
@@ -390,13 +391,13 @@ namespace Drones
 			}
 		}
 
-		private void середнійРезультатДистанціяТаСтатусПотраченоToolStripMenuItem_Click(object sender, EventArgs e)
+		private void function_4_ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			FormAvgDistance formAvg = new FormAvgDistance(this);
 			formAvg.ShowDialog();
 		}
 
-		private void найкращийРезультатToolStripMenuItem_Click(object sender, EventArgs e)
+		private void function_5_ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < dataGridView1.RowCount - 1; ++i)
 			{
@@ -449,6 +450,12 @@ namespace Drones
 
 			if (dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[6].Value.ToString() != "Успішне повернення")
 				dataGridView1.Rows.RemoveAt(dataGridView1.RowCount - 1);
+		}
+
+		private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			FormHelp formHelp = new FormHelp();
+			formHelp.ShowDialog();
 		}
 	}
 }
