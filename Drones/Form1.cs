@@ -83,7 +83,11 @@ namespace Drones
 		private void buttonDelete_Click(object sender, EventArgs e)
 		{
 			DataGridViewSelectedCellCollection cell = dataGridView1.SelectedCells;
-			if (cell != null)
+			if (cell.Count == 0)
+			{
+				MessageBox.Show("Не вибрані дані для видалення", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+			else
 			{
 				drones.RemoveAt(cell[0].RowIndex);
 				RefreshData();
@@ -157,9 +161,16 @@ namespace Drones
 		private void buttonEdit_Click(object sender, EventArgs e)
 		{
 			DataGridViewSelectedCellCollection cell = dataGridView1.SelectedCells;
-			FormEdit form = new FormEdit(cell[0], this);
-			form.ShowDialog();
-			RefreshData();
+			if (cell.Count == 0)
+			{
+				MessageBox.Show("Не вибрані дані для редагування", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+			else
+			{
+				FormEdit form = new FormEdit(cell[0], this);
+				form.ShowDialog();
+				RefreshData();
+			}
 		}
 
 		private void toolStripComboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)

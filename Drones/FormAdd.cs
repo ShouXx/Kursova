@@ -22,12 +22,54 @@ namespace Drones
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string Model = textBoxModel.Text;
-            string Operator = textBoxOperator.Text;
-            double Distance = double.Parse(textBoxDistance.Text.Replace('.', ','));
-            double Height = double.Parse(textBoxHeight.Text.Replace('.', ','));
-            double Speed = double.Parse(textBoxSpeed.Text.Replace('.', ','));
-            string Status = comboBoxStatus.Text;
+			if (textBoxModel.Text == "")
+			{
+				MessageBox.Show("Не заповнене поле Модель", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			string Model = textBoxModel.Text;
+			if (textBoxOperator.Text == "")
+			{
+				MessageBox.Show("Не заповнене поле Оператор", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			string Operator = textBoxOperator.Text;
+			if (textBoxDistance.Text == "")
+			{
+				MessageBox.Show("Не заповнене поле Дистанція", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (!double.TryParse(textBoxDistance.Text.Replace('.', ','), out double Distance))
+			{
+				MessageBox.Show("Не правильно заповнене поле Дистанція", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (textBoxHeight.Text == "")
+			{
+				MessageBox.Show("Не заповнене поле Висота", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (!double.TryParse(textBoxHeight.Text.Replace('.', ','), out double Height))
+			{
+				MessageBox.Show("Не правильно заповнене поле Висота", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (textBoxSpeed.Text == "")
+			{
+				MessageBox.Show("Не заповнене поле Швидкість", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (!double.TryParse(textBoxSpeed.Text.Replace('.', ','), out double Speed))
+			{
+				MessageBox.Show("Не правильно заповнене поле Швидкість", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (comboBoxStatus.Text == "")
+			{
+				MessageBox.Show("Не заповнене поле Статус", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			string Status = comboBoxStatus.Text;
 
             form1.drones.Add(new Drone(Model, Operator, Distance, Height, Speed, Status));
             form1.RefreshData();
