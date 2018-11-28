@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Drones
@@ -14,6 +9,7 @@ namespace Drones
 	public partial class Form1 : Form
 	{
 		public List<Drone> drones = new List<Drone>();
+		//Ключі сортування
 		private bool keyModel = false;
 		private bool keyOperator = false;
 		private bool keyDistance = false;
@@ -26,7 +22,7 @@ namespace Drones
 			InitializeComponent();
 			toolStripComboBoxStatus.SelectedIndex = 0;
 		}
-
+		//Виведення усіх дронів у таблицю
 		public void RefreshData()
 		{
 			dataGridView1.RowCount = 0;
@@ -42,18 +38,18 @@ namespace Drones
 				dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[6].Value = d.Status;
 			}
 		}
-
+		//Добавлення дрона
 		private void buttonAdd_Click(object sender, EventArgs e)
 		{
 			FormAdd add = new FormAdd(this);
 			add.ShowDialog();
 		}
-
+		//Вихід
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Close();
 		}
-
+		//Збереження файлу
 		private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
 		{
 			using (BinaryWriter writer = new BinaryWriter(File.OpenWrite(saveFileDialog1.FileName)))
@@ -69,17 +65,17 @@ namespace Drones
 				}
 			}
 		}
-
+		//Відображення вікна зберігання файлу
 		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			saveFileDialog1.ShowDialog();
 		}
-
+		//Відображення вікна відкриття файлу
 		private void openToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			openFileDialog1.ShowDialog();
 		}
-
+		//Видалення дрона
 		private void buttonDelete_Click(object sender, EventArgs e)
 		{
 			DataGridViewSelectedCellCollection cell = dataGridView1.SelectedCells;
@@ -93,20 +89,20 @@ namespace Drones
 				RefreshData();
 			}
 		}
-
+		//Створення нових данних про дрони
 		private void newToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			dataGridView1.RowCount = 0;
 			drones.Clear();
 			saveFileDialog1.FileName = "NewDrones";
 		}
-
+		//Інформація про програму
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			FormAbout formAbout = new FormAbout();
 			formAbout.ShowDialog();
 		}
-
+		//Збереження дронів
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (saveFileDialog1.FileName == "NewDrones")
@@ -129,7 +125,7 @@ namespace Drones
 				}
 			}
 		}
-
+		//Відкриття дронів
 		private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
 		{
 			drones.Clear();
@@ -151,13 +147,13 @@ namespace Drones
 			}
 			RefreshData();
 		}
-
+		//Показати усіх дронів
 		private void buttonShowAll_Click(object sender, EventArgs e)
 		{
 			RefreshData();
 			toolStripComboBoxStatus.SelectedIndex = 0;
 		}
-
+		//Редагування дронів
 		private void buttonEdit_Click(object sender, EventArgs e)
 		{
 			DataGridViewSelectedCellCollection cell = dataGridView1.SelectedCells;
@@ -172,7 +168,7 @@ namespace Drones
 				RefreshData();
 			}
 		}
-
+		//Виведення дронів за фільтром Статусу
 		private void toolStripComboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (toolStripComboBoxStatus.SelectedIndex == 0)
@@ -204,14 +200,14 @@ namespace Drones
 				}
 			}
 		}
-
+		//Зміна місцями дронів у списку
 		private void Swap<T>(IList<T> list, int indexA, int indexB)
 		{
 			T tmp = list[indexA];
 			list[indexA] = list[indexB];
 			list[indexB] = tmp;
 		}
-
+		//Сортування за моделлю
 		private void forModelToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
@@ -230,7 +226,7 @@ namespace Drones
 			keyModel = !keyModel;
 			RefreshData();
 		}
-
+		//Сортування за оператором
 		private void forOperatorToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
@@ -249,7 +245,7 @@ namespace Drones
 			keyOperator = !keyOperator;
 			RefreshData();
 		}
-
+		//Сортування за дистанцією
 		private void forDistanceToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
@@ -268,7 +264,7 @@ namespace Drones
 			keyDistance = !keyDistance;
 			RefreshData();
 		}
-
+		//Сортування за висотою
 		private void forHeightToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
@@ -287,7 +283,7 @@ namespace Drones
 			keyHeight = !keyHeight;
 			RefreshData();
 		}
-
+		//Сортування за швидкістю
 		private void forSpeedToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
@@ -306,7 +302,7 @@ namespace Drones
 			keySpeed = !keySpeed;
 			RefreshData();
 		}
-
+		//Сортування за статусом
 		private void forStatusToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < drones.Count - 1; i++)
@@ -325,13 +321,13 @@ namespace Drones
 			keyStatus = !keyStatus;
 			RefreshData();
 		}
-
+		//Очистити всіх дронів
 		private void clearToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			drones.Clear();
 			RefreshData();
 		}
-
+		//Функція групування по моделях які мають результат «Статус» – «успішне повернення» та найкраще значення – «Швидкість»
 		private void function_2_ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			RefreshData();
@@ -362,7 +358,7 @@ namespace Drones
 				}
 			dataGridView1.Sort(Column2, ListSortDirection.Ascending);
 		}
-
+		//Функція визначення моделей, які мають приблизно однаковий результат за показником «Висота» з відхиленням 7,359%
 		private void function_3_ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			RefreshData();
@@ -370,44 +366,48 @@ namespace Drones
 			int i = 0;
 			keyHeight = false;
 			forHeightToolStripMenuItem_Click(sender, e);
-			while (i < dataGridView1.RowCount)
-			{
-				while (i == 0)
+			if (dataGridView1.RowCount > 1)
+				while (i < dataGridView1.RowCount)
 				{
-					double d = 1 - Convert.ToDouble(dataGridView1.Rows[i + 1].Cells[4].Value) / Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
-					if (d > 0.07359)
-						dataGridView1.Rows.RemoveAt(i);
-					else
-						++i;
-				}
-				if (i == dataGridView1.RowCount - 1)
-				{
-					double d = 1 - Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value) / Convert.ToDouble(dataGridView1.Rows[i - 1].Cells[4].Value);
+					while (i == 0)
+					{
+						double d = 1 - Convert.ToDouble(dataGridView1.Rows[i + 1].Cells[4].Value) / Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
+						if (d > 0.07359)
+							dataGridView1.Rows.RemoveAt(i);
+						else
+							++i;
+					}
+					if (i == dataGridView1.RowCount - 1)
+					{
+						double d = 1 - Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value) / Convert.ToDouble(dataGridView1.Rows[i - 1].Cells[4].Value);
 
-					if (d > 0.07359)
-						dataGridView1.Rows.RemoveAt(i);
+						if (d > 0.07359)
+							dataGridView1.Rows.RemoveAt(i);
+						else
+							++i;
+					}
 					else
-						++i;
-				}
-				else
-				{
-					double db = 1 - Convert.ToDouble(dataGridView1.Rows[i + 1].Cells[4].Value) / Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
-					double dl = 1 - Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value) / Convert.ToDouble(dataGridView1.Rows[i - 1].Cells[4].Value);
+					{
+						double db = 1 - Convert.ToDouble(dataGridView1.Rows[i + 1].Cells[4].Value) / Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
+						double dl = 1 - Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value) / Convert.ToDouble(dataGridView1.Rows[i - 1].Cells[4].Value);
 
-					if (db > 0.07359 && dl > 0.07359)
-						dataGridView1.Rows.RemoveAt(i);
-					else
-						++i;
+						if (db > 0.07359 && dl > 0.07359)
+							dataGridView1.Rows.RemoveAt(i);
+						else
+							++i;
+					}
 				}
-			}
+			else
+				dataGridView1.Rows.RemoveAt(0);
 		}
-
+		//Функція визначення середнього результату «Дистанція» та знайти операторів,
+		//у яких результат «Статус» - «потрачено», та визначення відхилення їх результату «Статус» від середнього значення
 		private void function_4_ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			FormAvgDistance formAvg = new FormAvgDistance(this);
 			formAvg.ShowDialog();
 		}
-
+		//Функція виведення операторів, у яких загальний результат буде найкращим
 		private void function_5_ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			for (int i = 0; i < dataGridView1.RowCount - 1; ++i)
@@ -462,7 +462,7 @@ namespace Drones
 			if (dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[6].Value.ToString() != "Успішне повернення")
 				dataGridView1.Rows.RemoveAt(dataGridView1.RowCount - 1);
 		}
-
+		//Відкриття вікна допомоги
 		private void helpToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			FormHelp formHelp = new FormHelp();

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHelp));
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.SuspendLayout();
 			// 
@@ -38,7 +39,7 @@
 			this.richTextBox1.ReadOnly = true;
 			this.richTextBox1.Size = new System.Drawing.Size(459, 465);
 			this.richTextBox1.TabIndex = 0;
-			this.richTextBox1.Text = "";
+			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
 			// 
 			// FormHelp
 			// 
